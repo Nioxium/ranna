@@ -10,7 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as CreateRouteImport } from './routes/create'
 import { Route as ExploreRouteImport } from './routes/explore'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as EditIdRouteImport } from './routes/edit.$id'
 import { Route as RecipeSlugRouteImport } from './routes/recipe.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,9 +22,29 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreateRoute = CreateRouteImport.update({
+  id: '/create',
+  path: '/create',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExploreRoute = ExploreRouteImport.update({
   id: '/explore',
   path: '/explore',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EditIdRoute = EditIdRouteImport.update({
+  id: '/edit/$id',
+  path: '/edit/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RecipeSlugRoute = RecipeSlugRouteImport.update({
@@ -31,31 +55,69 @@ const RecipeSlugRoute = RecipeSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
+  '/create': typeof CreateRoute
   '/explore': typeof ExploreRoute
+  '/notifications': typeof NotificationsRoute
+  '/edit/$id': typeof EditIdRoute
   '/recipe/$slug': typeof RecipeSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
+  '/create': typeof CreateRoute
   '/explore': typeof ExploreRoute
+  '/notifications': typeof NotificationsRoute
+  '/edit/$id': typeof EditIdRoute
   '/recipe/$slug': typeof RecipeSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
+  '/create': typeof CreateRoute
   '/explore': typeof ExploreRoute
+  '/notifications': typeof NotificationsRoute
+  '/edit/$id': typeof EditIdRoute
   '/recipe/$slug': typeof RecipeSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/explore' | '/recipe/$slug'
+  fullPaths:
+    | '/'
+    | '/community'
+    | '/create'
+    | '/explore'
+    | '/notifications'
+    | '/edit/$id'
+    | '/recipe/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/explore' | '/recipe/$slug'
-  id: '__root__' | '/' | '/explore' | '/recipe/$slug'
+  to:
+    | '/'
+    | '/community'
+    | '/create'
+    | '/explore'
+    | '/notifications'
+    | '/edit/$id'
+    | '/recipe/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/community'
+    | '/create'
+    | '/explore'
+    | '/notifications'
+    | '/edit/$id'
+    | '/recipe/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CommunityRoute: typeof CommunityRoute
+  CreateRoute: typeof CreateRoute
   ExploreRoute: typeof ExploreRoute
+  NotificationsRoute: typeof NotificationsRoute
+  EditIdRoute: typeof EditIdRoute
   RecipeSlugRoute: typeof RecipeSlugRoute
 }
 
@@ -68,11 +130,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/create': {
+      id: '/create'
+      path: '/create'
+      fullPath: '/create'
+      preLoaderRoute: typeof CreateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/explore': {
       id: '/explore'
       path: '/explore'
       fullPath: '/explore'
       preLoaderRoute: typeof ExploreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/edit/$id': {
+      id: '/edit/$id'
+      path: '/edit/$id'
+      fullPath: '/edit/$id'
+      preLoaderRoute: typeof EditIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/recipe/$slug': {
@@ -87,7 +177,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CommunityRoute: CommunityRoute,
+  CreateRoute: CreateRoute,
   ExploreRoute: ExploreRoute,
+  NotificationsRoute: NotificationsRoute,
+  EditIdRoute: EditIdRoute,
   RecipeSlugRoute: RecipeSlugRoute,
 }
 export const routeTree = rootRouteImport
