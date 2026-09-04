@@ -10,7 +10,16 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as CreateRouteImport } from './routes/create'
 import { Route as ExploreRouteImport } from './routes/explore'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as SavedRouteImport } from './routes/saved'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as EditIdRouteImport } from './routes/edit.$id'
+import { Route as ProfileUsernameRouteImport } from './routes/profile.$username'
 import { Route as RecipeSlugRouteImport } from './routes/recipe.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,9 +27,54 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreateRoute = CreateRouteImport.update({
+  id: '/create',
+  path: '/create',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExploreRoute = ExploreRouteImport.update({
   id: '/explore',
   path: '/explore',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SavedRoute = SavedRouteImport.update({
+  id: '/saved',
+  path: '/saved',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EditIdRoute = EditIdRouteImport.update({
+  id: '/edit/$id',
+  path: '/edit/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileUsernameRoute = ProfileUsernameRouteImport.update({
+  id: '/profile/$username',
+  path: '/profile/$username',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RecipeSlugRoute = RecipeSlugRouteImport.update({
@@ -31,31 +85,104 @@ const RecipeSlugRoute = RecipeSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
+  '/create': typeof CreateRoute
   '/explore': typeof ExploreRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/saved': typeof SavedRoute
+  '/search': typeof SearchRoute
+  '/signup': typeof SignupRoute
+  '/edit/$id': typeof EditIdRoute
+  '/profile/$username': typeof ProfileUsernameRoute
   '/recipe/$slug': typeof RecipeSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
+  '/create': typeof CreateRoute
   '/explore': typeof ExploreRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/saved': typeof SavedRoute
+  '/search': typeof SearchRoute
+  '/signup': typeof SignupRoute
+  '/edit/$id': typeof EditIdRoute
+  '/profile/$username': typeof ProfileUsernameRoute
   '/recipe/$slug': typeof RecipeSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
+  '/create': typeof CreateRoute
   '/explore': typeof ExploreRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/saved': typeof SavedRoute
+  '/search': typeof SearchRoute
+  '/signup': typeof SignupRoute
+  '/edit/$id': typeof EditIdRoute
+  '/profile/$username': typeof ProfileUsernameRoute
   '/recipe/$slug': typeof RecipeSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/explore' | '/recipe/$slug'
+  fullPaths:
+    | '/'
+    | '/community'
+    | '/create'
+    | '/explore'
+    | '/login'
+    | '/notifications'
+    | '/saved'
+    | '/search'
+    | '/signup'
+    | '/edit/$id'
+    | '/profile/$username'
+    | '/recipe/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/explore' | '/recipe/$slug'
-  id: '__root__' | '/' | '/explore' | '/recipe/$slug'
+  to:
+    | '/'
+    | '/community'
+    | '/create'
+    | '/explore'
+    | '/login'
+    | '/notifications'
+    | '/saved'
+    | '/search'
+    | '/signup'
+    | '/edit/$id'
+    | '/profile/$username'
+    | '/recipe/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/community'
+    | '/create'
+    | '/explore'
+    | '/login'
+    | '/notifications'
+    | '/saved'
+    | '/search'
+    | '/signup'
+    | '/edit/$id'
+    | '/profile/$username'
+    | '/recipe/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CommunityRoute: typeof CommunityRoute
+  CreateRoute: typeof CreateRoute
   ExploreRoute: typeof ExploreRoute
+  LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
+  SavedRoute: typeof SavedRoute
+  SearchRoute: typeof SearchRoute
+  SignupRoute: typeof SignupRoute
+  EditIdRoute: typeof EditIdRoute
+  ProfileUsernameRoute: typeof ProfileUsernameRoute
   RecipeSlugRoute: typeof RecipeSlugRoute
 }
 
@@ -68,11 +195,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/create': {
+      id: '/create'
+      path: '/create'
+      fullPath: '/create'
+      preLoaderRoute: typeof CreateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/explore': {
       id: '/explore'
       path: '/explore'
       fullPath: '/explore'
       preLoaderRoute: typeof ExploreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/saved': {
+      id: '/saved'
+      path: '/saved'
+      fullPath: '/saved'
+      preLoaderRoute: typeof SavedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/edit/$id': {
+      id: '/edit/$id'
+      path: '/edit/$id'
+      fullPath: '/edit/$id'
+      preLoaderRoute: typeof EditIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile/$username': {
+      id: '/profile/$username'
+      path: '/profile/$username'
+      fullPath: '/profile/$username'
+      preLoaderRoute: typeof ProfileUsernameRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/recipe/$slug': {
@@ -87,7 +277,16 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CommunityRoute: CommunityRoute,
+  CreateRoute: CreateRoute,
   ExploreRoute: ExploreRoute,
+  LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
+  SavedRoute: SavedRoute,
+  SearchRoute: SearchRoute,
+  SignupRoute: SignupRoute,
+  EditIdRoute: EditIdRoute,
+  ProfileUsernameRoute: ProfileUsernameRoute,
   RecipeSlugRoute: RecipeSlugRoute,
 }
 export const routeTree = rootRouteImport
