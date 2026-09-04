@@ -14,7 +14,10 @@ import { Route as CommunityRouteImport } from './routes/community'
 import { Route as CreateRouteImport } from './routes/create'
 import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as SavedRouteImport } from './routes/saved'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as EditIdRouteImport } from './routes/edit.$id'
+import { Route as ProfileUsernameRouteImport } from './routes/profile.$username'
 import { Route as RecipeSlugRouteImport } from './routes/recipe.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -42,9 +45,24 @@ const NotificationsRoute = NotificationsRouteImport.update({
   path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SavedRoute = SavedRouteImport.update({
+  id: '/saved',
+  path: '/saved',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EditIdRoute = EditIdRouteImport.update({
   id: '/edit/$id',
   path: '/edit/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileUsernameRoute = ProfileUsernameRouteImport.update({
+  id: '/profile/$username',
+  path: '/profile/$username',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RecipeSlugRoute = RecipeSlugRouteImport.update({
@@ -59,7 +77,10 @@ export interface FileRoutesByFullPath {
   '/create': typeof CreateRoute
   '/explore': typeof ExploreRoute
   '/notifications': typeof NotificationsRoute
+  '/saved': typeof SavedRoute
+  '/search': typeof SearchRoute
   '/edit/$id': typeof EditIdRoute
+  '/profile/$username': typeof ProfileUsernameRoute
   '/recipe/$slug': typeof RecipeSlugRoute
 }
 export interface FileRoutesByTo {
@@ -68,7 +89,10 @@ export interface FileRoutesByTo {
   '/create': typeof CreateRoute
   '/explore': typeof ExploreRoute
   '/notifications': typeof NotificationsRoute
+  '/saved': typeof SavedRoute
+  '/search': typeof SearchRoute
   '/edit/$id': typeof EditIdRoute
+  '/profile/$username': typeof ProfileUsernameRoute
   '/recipe/$slug': typeof RecipeSlugRoute
 }
 export interface FileRoutesById {
@@ -78,7 +102,10 @@ export interface FileRoutesById {
   '/create': typeof CreateRoute
   '/explore': typeof ExploreRoute
   '/notifications': typeof NotificationsRoute
+  '/saved': typeof SavedRoute
+  '/search': typeof SearchRoute
   '/edit/$id': typeof EditIdRoute
+  '/profile/$username': typeof ProfileUsernameRoute
   '/recipe/$slug': typeof RecipeSlugRoute
 }
 export interface FileRouteTypes {
@@ -89,7 +116,10 @@ export interface FileRouteTypes {
     | '/create'
     | '/explore'
     | '/notifications'
+    | '/saved'
+    | '/search'
     | '/edit/$id'
+    | '/profile/$username'
     | '/recipe/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -98,7 +128,10 @@ export interface FileRouteTypes {
     | '/create'
     | '/explore'
     | '/notifications'
+    | '/saved'
+    | '/search'
     | '/edit/$id'
+    | '/profile/$username'
     | '/recipe/$slug'
   id:
     | '__root__'
@@ -107,7 +140,10 @@ export interface FileRouteTypes {
     | '/create'
     | '/explore'
     | '/notifications'
+    | '/saved'
+    | '/search'
     | '/edit/$id'
+    | '/profile/$username'
     | '/recipe/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -117,7 +153,10 @@ export interface RootRouteChildren {
   CreateRoute: typeof CreateRoute
   ExploreRoute: typeof ExploreRoute
   NotificationsRoute: typeof NotificationsRoute
+  SavedRoute: typeof SavedRoute
+  SearchRoute: typeof SearchRoute
   EditIdRoute: typeof EditIdRoute
+  ProfileUsernameRoute: typeof ProfileUsernameRoute
   RecipeSlugRoute: typeof RecipeSlugRoute
 }
 
@@ -158,11 +197,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/saved': {
+      id: '/saved'
+      path: '/saved'
+      fullPath: '/saved'
+      preLoaderRoute: typeof SavedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/edit/$id': {
       id: '/edit/$id'
       path: '/edit/$id'
       fullPath: '/edit/$id'
       preLoaderRoute: typeof EditIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile/$username': {
+      id: '/profile/$username'
+      path: '/profile/$username'
+      fullPath: '/profile/$username'
+      preLoaderRoute: typeof ProfileUsernameRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/recipe/$slug': {
@@ -181,7 +241,10 @@ const rootRouteChildren: RootRouteChildren = {
   CreateRoute: CreateRoute,
   ExploreRoute: ExploreRoute,
   NotificationsRoute: NotificationsRoute,
+  SavedRoute: SavedRoute,
+  SearchRoute: SearchRoute,
   EditIdRoute: EditIdRoute,
+  ProfileUsernameRoute: ProfileUsernameRoute,
   RecipeSlugRoute: RecipeSlugRoute,
 }
 export const routeTree = rootRouteImport
