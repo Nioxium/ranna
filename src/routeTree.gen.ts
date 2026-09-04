@@ -13,9 +13,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as CommunityRouteImport } from './routes/community'
 import { Route as CreateRouteImport } from './routes/create'
 import { Route as ExploreRouteImport } from './routes/explore'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as SavedRouteImport } from './routes/saved'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as SignupRouteImport } from './routes/signup'
 import { Route as EditIdRouteImport } from './routes/edit.$id'
 import { Route as ProfileUsernameRouteImport } from './routes/profile.$username'
 import { Route as RecipeSlugRouteImport } from './routes/recipe.$slug'
@@ -40,6 +42,11 @@ const ExploreRoute = ExploreRouteImport.update({
   path: '/explore',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
@@ -53,6 +60,11 @@ const SavedRoute = SavedRouteImport.update({
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EditIdRoute = EditIdRouteImport.update({
@@ -76,9 +88,11 @@ export interface FileRoutesByFullPath {
   '/community': typeof CommunityRoute
   '/create': typeof CreateRoute
   '/explore': typeof ExploreRoute
+  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/saved': typeof SavedRoute
   '/search': typeof SearchRoute
+  '/signup': typeof SignupRoute
   '/edit/$id': typeof EditIdRoute
   '/profile/$username': typeof ProfileUsernameRoute
   '/recipe/$slug': typeof RecipeSlugRoute
@@ -88,9 +102,11 @@ export interface FileRoutesByTo {
   '/community': typeof CommunityRoute
   '/create': typeof CreateRoute
   '/explore': typeof ExploreRoute
+  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/saved': typeof SavedRoute
   '/search': typeof SearchRoute
+  '/signup': typeof SignupRoute
   '/edit/$id': typeof EditIdRoute
   '/profile/$username': typeof ProfileUsernameRoute
   '/recipe/$slug': typeof RecipeSlugRoute
@@ -101,9 +117,11 @@ export interface FileRoutesById {
   '/community': typeof CommunityRoute
   '/create': typeof CreateRoute
   '/explore': typeof ExploreRoute
+  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/saved': typeof SavedRoute
   '/search': typeof SearchRoute
+  '/signup': typeof SignupRoute
   '/edit/$id': typeof EditIdRoute
   '/profile/$username': typeof ProfileUsernameRoute
   '/recipe/$slug': typeof RecipeSlugRoute
@@ -115,9 +133,11 @@ export interface FileRouteTypes {
     | '/community'
     | '/create'
     | '/explore'
+    | '/login'
     | '/notifications'
     | '/saved'
     | '/search'
+    | '/signup'
     | '/edit/$id'
     | '/profile/$username'
     | '/recipe/$slug'
@@ -127,9 +147,11 @@ export interface FileRouteTypes {
     | '/community'
     | '/create'
     | '/explore'
+    | '/login'
     | '/notifications'
     | '/saved'
     | '/search'
+    | '/signup'
     | '/edit/$id'
     | '/profile/$username'
     | '/recipe/$slug'
@@ -139,9 +161,11 @@ export interface FileRouteTypes {
     | '/community'
     | '/create'
     | '/explore'
+    | '/login'
     | '/notifications'
     | '/saved'
     | '/search'
+    | '/signup'
     | '/edit/$id'
     | '/profile/$username'
     | '/recipe/$slug'
@@ -152,9 +176,11 @@ export interface RootRouteChildren {
   CommunityRoute: typeof CommunityRoute
   CreateRoute: typeof CreateRoute
   ExploreRoute: typeof ExploreRoute
+  LoginRoute: typeof LoginRoute
   NotificationsRoute: typeof NotificationsRoute
   SavedRoute: typeof SavedRoute
   SearchRoute: typeof SearchRoute
+  SignupRoute: typeof SignupRoute
   EditIdRoute: typeof EditIdRoute
   ProfileUsernameRoute: typeof ProfileUsernameRoute
   RecipeSlugRoute: typeof RecipeSlugRoute
@@ -190,6 +216,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExploreRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/notifications': {
       id: '/notifications'
       path: '/notifications'
@@ -209,6 +242,13 @@ declare module '@tanstack/react-router' {
       path: '/search'
       fullPath: '/search'
       preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/edit/$id': {
@@ -240,9 +280,11 @@ const rootRouteChildren: RootRouteChildren = {
   CommunityRoute: CommunityRoute,
   CreateRoute: CreateRoute,
   ExploreRoute: ExploreRoute,
+  LoginRoute: LoginRoute,
   NotificationsRoute: NotificationsRoute,
   SavedRoute: SavedRoute,
   SearchRoute: SearchRoute,
+  SignupRoute: SignupRoute,
   EditIdRoute: EditIdRoute,
   ProfileUsernameRoute: ProfileUsernameRoute,
   RecipeSlugRoute: RecipeSlugRoute,
