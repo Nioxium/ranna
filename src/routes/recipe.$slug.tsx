@@ -144,7 +144,7 @@ function RecipeDetail() {
       authorName: currentUser.name,
       body,
       createdAt: "Just now",
-      parentId,
+      ...(parentId ? { parentId } : {}),
     });
     toast.success("Comment posted ✓");
   }
