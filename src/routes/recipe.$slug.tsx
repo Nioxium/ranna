@@ -167,7 +167,7 @@ function RecipeDetail() {
         </nav>
 
         <div className="mt-6 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="overflow-hidden rounded-[1.75rem] border border-border shadow-card">
+          <div className="self-start overflow-hidden rounded-[1.75rem] border border-border shadow-card">
             <img
               src={recipe.image}
               alt={recipe.title}
