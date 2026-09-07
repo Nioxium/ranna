@@ -135,7 +135,7 @@ export function RecipeForm({ existing }: { existing?: Recipe }) {
       const to = prev.findIndex((s) => s.id === targetId);
       const next = prev.slice();
       const [moved] = next.splice(from, 1);
-      next.splice(to, 0, moved);
+      if (moved) next.splice(to, 0, moved);
       return next;
     });
   }

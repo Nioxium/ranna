@@ -25,14 +25,14 @@ import {
 import { useStore } from "@/lib/store";
 
 interface ExploreSearch {
-  category?: string;
-  q?: string;
+  category?: string | undefined;
+  q?: string | undefined;
 }
 
 export const Route = createFileRoute("/explore")({
   validateSearch: (search: Record<string, unknown>): ExploreSearch => ({
-    category: typeof search.category === "string" ? search.category : undefined,
-    q: typeof search.q === "string" ? search.q : undefined,
+    category: typeof search["category"] === "string" ? search["category"] : undefined,
+    q: typeof search["q"] === "string" ? search["q"] : undefined,
   }),
   head: () => ({
     meta: [
